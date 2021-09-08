@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Shopping Cart</title>
+
+	<!-- Bootstrap Link -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+	<!-- Js Link -->
+	<script type="text/javascript" src="script.js"></script>
+
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;700&display=swap');
+		*{margin: 0; padding: 0; box-sizing: border-box; font-family: 'Comfortaa', cursive;}
+		.img1{transform: rotateY(180deg);}
+	</style>	
+
+</head>
+
+
+<body class="container-fluid" onload="bodyload()">
+	
+	<header class="bg-danger p-2 text-center text-white ">
+		<h2><img src="shopping-bag.png" height="30" width="30"> Vaibz Shop <img src="shopping-bag.png" class="img1" height="30" width="30"></h2>
+	</header>
+
+
+	<section>
+		<div class="row">
+
+<!-- ............................................................................................................. -->
+
+			<div class="col-lg-3">
+
+				<div class="mt-3">
+					<label class="form-label">Select Category</label>
+				</div>
+				<select class="form-select" onchange="CategoryChanged()"  id="lstCategories"> </select>
+
+
+				<div class="mt-3">
+					<label class="form-label" >Select Product</label>
+				</div>
+				<select class="form-select" id="lstProducts" onchange="ProductChanged()"> </select>
+
+				<div class="mt-3">
+					<br>
+					<div class="card">
+
+						<div class="card-header text-center">
+							<h3>Product Details </h3>
+						</div>
+
+						<div class="card-body text-center">
+							<h2 id="lblName"> </h2>
+						</div>
+
+
+						<div class="accordion" id="accordionPanelsStayOpenExample">
+								  <div class="accordion-item">
+								    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+								      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+								      Product Description 
+								      </button>
+								    </h2>
+								    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+								      <div class="accordion-body">
+								        <strong><p id="lblDesp"></p></strong>
+								      </div>
+								    </div>
+								  </div>
+								  <div class="accordion-item">
+								    <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+								      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+								         Product Price 
+								      </button>
+								    </h2>
+								    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+								      <div class="accordion-body">
+								        <strong>Price:<p id="lblPrice"></p></strong> 
+								      </div>
+								    </div>
+								  </div>
+						</div>
+
+						<br>
+
+						<div class="card-footer text-center d-grid">
+							<button class="btn btn-danger" onclick="AddToCartClick()">
+								<img src="add-cart.png" class="img-fluid" width="20" height="20"> Add To Cart 
+							</button>
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+<!-- ...........................................Img Preview..................................................... -->
+
+			<div class="col-7">
+				<div class="card-body text-center mt-3">	
+				  <img id="imgProduct"  class="rounded img-fluid">
+					</div>
+
+<!-- .............................................Popup Model Start......................................... -->
+
+					<div class="modal fade show " id="cart">
+					<div class="modal-dialog modal-dialog-centered">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h3>Your Cart Items</h3>
+							</div>
+							<div class="modal-body">
+								<table class="table table-hover">
+									<tr>
+										<th>Name</th>
+										<th>Price</th>
+										<th>Pre-View</th>
+									</tr>
+									<tbody id="tbody">
+										
+									</tbody>
+								</table>
+							</div>
+							<div class="modal-footer">
+								<button class="btn btn-primary" onclick="OrderPlaced()" data-bs-dismiss="modal">
+									Place Order
+								</button>
+								<button class="btn btn-outline-dark" data-bs-dismiss="modal">
+									Cancel
+								</button>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+<!-- .............................................Popup Model End......................................... -->
+
+
+			<div class="col-2">
+			<button type="button" class="btn btn-warning position-relative mt-4" data-bs-toggle="modal" data-bs-target="#cart" >
+					<img src="shopping-cart.png" width="20" height="20"> Your Cart items
+					  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+					    <span id="lblCount"></span>
+					  </span>
+			</button>
+
+			</div>
+<!-- ................................................................................................................ -->
+	
+		</div>
+	</section>
+</body>
+
+				
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+</html>
